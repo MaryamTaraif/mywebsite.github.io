@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Cart</title>
+
+	<link href="tralive.css" rel="stylesheet" type="text/css">
+
+	<script>
+
+		//Calculate total price
+		function CalculateTotalPrice() {
+
+			//calculate price based on quantity
+
+			//declare variables
+			var Price = document.getElementById("Price").value;
+			var quantity = document.getElementById("quantity").value;
+			//store quantity 
+			sessionStorage.setItem("quantity", quantity);
+
+			//multiply quantity to price and use parseint to convert into int
+			var total = parseInt(quantity) * parseInt(Price);
+
+			document.getElementById("total_price").value = (total + " BD");
+			sessionStorage.setItem("total", total + " BD");
+
+		}
+
+
+
+
+		//clear input fields when submitting
+		function processData() {
+			document.getElementById("Country").value = " ";
+			document.getElementById("Price").value = " ";
+			document.getElementById("Days").value = " ";
+			document.getElementById("quantity").value = " ";
+			document.getElementById("total_price").value = " ";
+		}
+
+		//show data in input fields whenever the page loads 
+		function ShowData() {
+			document.getElementById("Country").value = sessionStorage.getItem("Country");
+			document.getElementById("Price").value = sessionStorage.getItem("Price");
+			document.getElementById("Days").value = sessionStorage.getItem("Days");
+			document.getElementById("quantity").value = sessionStorage.getItem("quantity");
+			document.getElementById("total_price").value = sessionStorage.getItem("total");
+		}
+
+
+		// this function will get the last order once submitted and paid in payment page;
+		function GetData() {
+			document.getElementById("Country").value = localStorage.getItem("Country_Local");
+			document.getElementById("Price").value = localStorage.getItem("Price_Local");
+			document.getElementById("Days").value = localStorage.getItem("Days_Local");
+			document.getElementById("quantity").value = localStorage.getItem("Travelers_Local");
+			document.getElementById("total_price").value = localStorage.getItem("TotalPay_Local");
+		}
+
+
+	</script>
+</head>
+
+<body onLoad="ShowData();">
+
+	<div id="navbar">
+		<!--logo pic-->
+		<img src="images/logo.png" id="logopic" alt="">
+		<!--list of links on website-->
+		<ul id="menu">
+			<li><a href="tralive.html">Home</a></li>
+			<li><a href="AboutUs.html">About Us</a></li>
+			<li><a href="Packages.html">Packages</a></li>
+			<li><a href="Review.html">Reviews</a></li>
+			<li><a href="Cart.html">Cart</a></li>
+
+			<li> <input type="text" placeholder="Search.." class="Search"></li>
+
+		</ul>
+
+	</div>
+
+
+	<!--pruple bar title-->
+	<div class="PurpleBar">
+		<p>Your Cart</p>
+	</div>
+
+
+
+	<!--order form-->
+	<div id="Cart_main">
+
+		<div id="Cart_fields">
+
+			<form onSubmit="return processData()">
+				<p class="order_form">Country:<br>
+					<input type="text" class="Cart_form" id="Country" readonly>
+				</p>
+
+				<p class="order_form">Package Price:<br>
+					<input type="text" class="Cart_form" id="Price" readonly>
+				</p>
+
+
+				<p class="order_form">Days:<br>
+					<input type="text" class="Cart_form" id="Days" readonly>
+				</p>
+
+				<p class="order_form">Number of Travelers: <br>
+					<input type="number" value="1" min="1" class="Cart_form" id="quantity">
+				</p>
+
+				<p class="order_form">Total Price: <br>
+					<input type="text" class="Cart_form" id="total_price" readonly>
+
+					<!--buttons to submit process to payment and view last order-->
+					<input type="button" value="Calculate" onClick="CalculateTotalPrice()" class="Submit">
+				</p>
+				<input type="button" value="View Last Order" onClick="GetData();" class="Submit">
+				<input type="button" value=" Submit" onClick="processData();" class="Submit">
+				<a href="Payment.html"><input type="button" value=" Process to payment" onClick="processData();"
+						class="Submit"></a>
+
+			</form>
+		</div>
+
+	</div>
+
+
+	<!--footer styling-->
+	<div id="footer">
+		<br>
+		<!--Footer left side-->
+		<div id="Fleft">
+			<br>
+			© 2021, Tralive. All rights reserved
+		</div>
+		<!--Footer middle side-->
+		<div id="Fmiddle">
+			<br>
+			<!--clickable links-->
+			<a href="tralive.html" class="Footer_links">Home | </a>
+			<a href="AboutUs.html" class="Footer_links">About Us | </a>
+			<a href="Packages.html" class="Footer_links">Packages | </a>
+			<a href="Review.html" class="Footer_links">Reviews | </a>
+			<a href="Cart.html" class="Footer_links">Cart</a>
+		</div>
+		<!--Footer right side-->
+		<div id="Fright">
+			<a>Tel:66381137 Fax:66381137</a><br>
+			<span id="Footer_compnay_name">Tralive</span> Team would be more than happy to help you
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Payment</title>
+
+	<link href="tralive.css" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript">
+
+		//get summary order from session storage and show to user
+		function GetData() {
+			document.getElementById("NextTrip").value = sessionStorage.getItem("Country");
+			document.getElementById("TotalPay").value = sessionStorage.getItem("total");
+			document.getElementById("Days").value = sessionStorage.getItem("Days");
+			document.getElementById("Travelers").value = sessionStorage.getItem("quantity");
+			document.getElementById("Price").value = sessionStorage.getItem("Price");
+
+		}
+
+		//process data entered by user
+		function processData() {
+			//variables decliration
+			var NameCard = document.getElementById("NameCard").value;
+			var CVV = document.getElementById("CVV").value;
+			var CardNumber = document.getElementById("CardNumber").value;
+			var Name = document.getElementById("Name").value;
+			var CPR = document.getElementById("CPR").value;
+			var Email = document.getElementById("Email").value;
+
+			//validation
+			if (Name == "") {
+				document.getElementById("errorPay").innerHTML = ("Please Enter Your name ");
+				return false;
+			}
+			else if (CPR == "") {
+				document.getElementById("errorPay").innerHTML = ("Please Enter Your CPR");
+				return false;
+			}
+			else if (Email == "") {
+				document.getElementById("errorPay").innerHTML = ("Please Enter Your Email Address");
+				return false;
+			}
+			else if (NameCard == "") {
+				document.getElementById("errorPay").innerHTML = ("Please Enter the Name on Your Card");
+				return false;
+			}
+			else if (CVV == "") {
+				document.getElementById("errorPay").innerHTML = ("Please Enter CVV");
+				return false;
+			}
+			else if (CardNumber == "") {
+				document.getElementById("errorPay").innerHTML = ("Please Enter Card Number");
+				return false;
+			}
+			else if (Name == "") {
+				document.getElementById("errorPay").innerHTML = ("Please Enter Your Name");
+				return false;
+			}
+
+
+			//Store items in local storage
+			else {
+				localStorage.setItem("NameCard", NameCard);
+				localStorage.setItem("CVV", CVV);
+				localStorage.setItem("CardNumber", CardNumber);
+				localStorage.setItem("Name", Name);
+				localStorage.setItem("CPR", CPR);
+				localStorage.setItem("Email", Email);
+
+				alert("Your data has been submitted!, The receipt will be sent on email");
+			}
+
+		}
+
+
+
+		//Save order in local Storage when pay is completed
+		function SaveLocal() {
+			//declare variables and get value 
+			var Country = document.getElementById("NextTrip").value;
+			var TotalPay = document.getElementById("TotalPay").value;
+			var Days = document.getElementById("Days").value;
+			var Travelers = document.getElementById("Travelers").value;
+			var Price = document.getElementById("Price").value;
+
+			//store in local storage
+			localStorage.setItem("Country_Local", Country);
+			localStorage.setItem("TotalPay_Local", TotalPay);
+			localStorage.setItem("Days_Local", Days);
+			localStorage.setItem("Travelers_Local", Travelers);
+			localStorage.setItem("Price_Local", Price);
+
+		}
+
+
+
+
+	</script>
+
+
+</head>
+<!--get the data whenever the page loads-->
+
+<body onLoad="GetData()">
+
+
+	<!--navigation bar div-->
+	<div id="navbar">
+		<!--logo pic-->
+		<img src="images/logo.png" id="logopic" alt="">
+		<!--list of links on website-->
+		<ul id="menu">
+			<li><a href="tralive.html">Home</a></li>
+			<li><a href="AboutUs.html">About Us</a></li>
+			<li><a href="Packages.html">Packages</a></li>
+			<li><a href="Review.html">Reviews</a></li>
+			<li><a href="Cart.html">Cart</a></li>
+
+			<li> <input type="text" placeholder="Search.." class="Search"></li>
+
+		</ul>
+
+	</div>
+
+	<!--the whole container-->
+
+	<div id="wrapper">
+
+		<div id="Payment_container">
+
+
+			<!--show Order summary to user -->
+			<form onSubmit="return processData() ; SaveLocal();">
+				<h1>Order Summary</h1>
+
+				<h3>Your Next trip will be to</h3>
+				<input type="text" id="NextTrip" class="Cart_form" readonly>
+
+				<h3>Single Package Price is</h3>
+				<input type="text" id="Price" class="Cart_form" readonly>
+
+				<h3>Number of Travelers</h3>
+				<input type="text" id="Travelers" class="Cart_form" readonly>
+
+				<h3>Your Total will be</h3>
+				<input type="text" id="TotalPay" class="Cart_form" readonly>
+				<h3>Days</h3>
+				<input type="text" id="Days" class="Cart_form" readonly>
+				<br> <br>
+
+
+				<!--propmt user to enter his personal details  -->
+				<h1>Enter Your Details</h1>
+				<h3>Name </h3>
+				<input type="text" class="Cart_form" placeholder="Maryam Saeed Taraif" id="Name">
+
+				<h3>CPR Number</h3>
+				<input type="text" class="Cart_form" placeholder="000000000" id="CPR">
+
+				<h3>Email Address </h3>
+				<input type="text" class="Cart_form" placeholder="maryamtraif@gmail.com" id="Email">
+
+
+				<!--Card payment details-->
+				<h1>Confirm Your Payment</h1>
+				<h3>Name On Card</h3>
+				<input type="text" class="Cart_form" placeholder="Maryam Saeed Taraif" id="NameCard">
+
+				<h3>CVV</h3>
+				<input type="password" class="Cart_form" placeholder="***" max="3" id="CVV">
+
+				<h3>Card Number</h3>
+				<input type="text " class="Cart_form" placeholder="1111-2222-3333-4444" id="CardNumber">
+
+				<h3>Expire Date</h3>
+				<select name="months" id="months" class="Cart_form">
+					<option value="Jan">Jan</option>
+					<option value="Feb">Feb</option>
+					<option value="Mar">Mar</option>
+					<option value="Apr">Apr</option>
+					<option value="May">May</option>
+					<option value="Jun">Jun</option>
+					<option value="Jul">Jul</option>
+					<option value="Aug">Aug</option>
+					<option value="Sep">Sep</option>
+					<option value="Oct">Oct</option>
+					<option value="Nov">Nov</option>
+					<option value="Dec">Dec</option>
+				</select>
+
+				<select name="years" id="years" class="Cart_form">
+					<option value="2020">2021</option>
+					<option value="2021">2022</option>
+					<option value="2022">2023</option>
+					<option value="2023">2024</option>
+					<option value="2024">2025</option>
+					<option value="2025">2026</option>
+				</select>
+
+				<br>
+				<input type="Submit" value="Confirm" class="ConfirmPayemnt" id="Confirm"
+					onClick="processData() ; SaveLocal(); ">
+			</form>
+		</div>
+	</div>
+
+	<!--show error on uncompleted data fields-->
+	<div id="validate">
+		<span id="errorPay"></span>
+
+	</div>
+
+
+
+	<!--footer styling-->
+	<div id="footer">
+		<br>
+		<!--Footer left side-->
+		<div id="Fleft">
+			<br>
+			© 2021, Tralive. All rights reserved
+		</div>
+		<!--Footer middle side-->
+		<div id="Fmiddle">
+			<br>
+			<!--clickable links-->
+			<a href="tralive.html" class="Footer_links">Home | </a>
+			<a href="AboutUs.html" class="Footer_links">About Us | </a>
+			<a href="Packages.html" class="Footer_links">Packages | </a>
+			<a href="Review.html" class="Footer_links">Reviews | </a>
+			<a href="Cart.html" class="Footer_links">Cart</a>
+		</div>
+		<!--Footer right side-->
+		<div id="Fright">
+			<a>Tel:66381137 Fax:66381137</a><br>
+			<span id="Footer_compnay_name">Tralive</span> Team would be more than happy to help you
+
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>

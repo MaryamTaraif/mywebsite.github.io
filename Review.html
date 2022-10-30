@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Review</title>
+	<script type="text/javascript">
+		//processing data 		
+		function processData(){
+		//variables decliration
+		var FirstName = document.getElementById("FirstName").value;
+		var LastName = document.getElementById("LastName").value;
+		var Email = document.getElementById("Email").value;
+		var Subject = document.getElementById("Subject").value;
+		var Message = document.getElementById("Message").value;
+		//validation
+			if(FirstName=="" ){
+				document.getElementById("error").innerHTML=("Please Enter First Name");
+			return false;
+			}
+			else if(LastName==""){
+				document.getElementById("error").innerHTML=("Please Enter Last Name");
+			return false;
+					}
+			else if(Email==""){
+				document.getElementById("error").innerHTML=("Please Enter Email");
+			return false;
+					}
+			else if(Subject==""){
+				document.getElementById("error").innerHTML=("Please Enter Subject");
+			return false;
+					}
+			else if(Message==""){
+				document.getElementById("error").innerHTML=("Please Enter Message");
+			return false;
+					}
+			//Store items in local storage
+			else{
+				localStorage.setItem("FirstName",FirstName);
+				localStorage.setItem("LastName",LastName);
+				localStorage.setItem("Email",Email);
+				localStorage.setItem("Subject",Subject);
+				localStorage.setItem("Message",Message);
+				alert("Your Review has been submitted!");
+			}
+
+		}
+	
+		
+		
+		
+		//retrive function	
+		function Retrive(){
+			document.getElementById("FirstName").value = localStorage.getItem("FirstName");
+			document.getElementById("LastName").value = localStorage.getItem("LastName");
+			document.getElementById("Email").value = localStorage.getItem("Email");
+			document.getElementById("Subject").value = localStorage.getItem("Subject");
+			document.getElementById("Message").value = localStorage.getItem("Message");
+		}
+		
+		//delete function
+		function Delete(){
+			localStorage.removeItem("FirstName");
+			localStorage.removeItem("LastName");
+			localStorage.removeItem("Email");
+			localStorage.removeItem("Subject");
+			localStorage.removeItem("Message");
+			alert("Your Review has been deleted!");
+			
+		}
+		
+		
+			
+		
+		</script>
+	
+	
+	
+	
+	
+</head>
+<link href="tralive.css" rel="stylesheet" type="text/css">
+<body>
+	<div id="navbar">
+		<img src="images/logo.png" id="logopic" alt=""> 
+	
+	<ul id="menu">
+		<li><a href="tralive.html">Home</a></li>
+		<li><a href="AboutUs.html">About Us</a></li>
+		<li><a href="Packages.html">Packages</a></li>
+		<li><a href="Review.html">Reviews</a></li>
+		<li><a href="Cart.html">Cart</a></li>
+		
+		<li> <input type="text" placeholder="Search.." class="Search"></li>
+		
+	</ul>
+	</div>
+<!--purple bar title-->
+	<div class="PurpleBar">
+		<p>Clients Says</p>
+	</div>
+<!--3 hardcoded reviews section-->
+	<div id ="Reviews_Section">
+		
+			
+		<div class="main_left">
+			
+			<p><img src="images/User.png" alt="" class="user">Batool Saeed<br><br>
+			I've been dealing with Tralive since they had an office, and having this website really took me little time to schedule and look at packages, I saved a lot of time, and the website is easy to use, I've had no difficulties dealing with it.First time booking with you but will do again for sure so easy would definitely recommend to my friends and family. I'm impressed.</p>
+		</div>
+		<div class="main_middle">
+			<p><img src="images/User.png" class="user" alt="">Eman Khalil<br><br>From the online booking, to the actual trip itself was relatively easy! Had no problems whatsoever and any queries I had was swiftly dealt with. We had an amazing trip, and will definitely book again. The process was fast and everything went smoothly. Many thanks to all involved, my mother and I had a wonderful trip celebrating my birthday gift.</p>
+			</div>
+			<div class="main_right">
+			<p><img src="images/User.png" class="user" alt="">Maryam Taraif<br><br>Your company was helpful and easy to deal with, and we would certainly be interested in booking similar deals through you again.Iot of time, Tralive are Always very helpful and prompt with booking and keeping us up to date.I found your service very good in the holiday acquisition process but lacking in the quality of the accommodation.</p>
+				
+			<span id="User_review"></span>
+		</div>
+			
+		
+	
+	</div>
+<!--review form-->
+	<div id="Review_form">
+		<div id="review_right">
+		<form onSubmit="return processData();">
+			<input type="text" placeholder="First Name" class="input-4" id="FirstName">
+			<input type="text" placeholder="Last Name" class="input-4" id="LastName">
+			<br>
+			<input type="text" placeholder="Email" class="input-4" id="Email"> 
+			<input type="text" placeholder="Subject" class="input-4" id="Subject">
+			 <input type="text" placeholder="Message" class="input-5" id="Message"><br>
+			
+<!--buttons to submit, view, retrive-->
+			<input type="submit" class="review-form-button" >
+			<input type="button" value="Last Review" class="review-form-button" onClick="Retrive()"> 
+			<input type="button" value="Delete" class="review-form-button" onClick="Delete()"> 
+			
+		</form>
+			
+			<br>
+			<span id="error"></span>
+		</div>
+	</div>
+		
+			
+		
+		
+<div id="review_left">
+  
+			<h1>Website Review</h1>
+	<p>Thank you for choosing to review our website!</p>
+    <img src="images/loader.gif" class="earthPic" alt=""/>
+	
+    </div>
+	
+	
+	
+<!--footer styling-->	
+	<div id="footer">
+		<br>
+		<!--Footer left side-->
+		<div id="Fleft">
+			<br>
+			 © 2021, Tralive. All rights reserved
+		</div>
+			<!--Footer middle side-->
+		<div id="Fmiddle">
+			<br>
+				<!--clickable links-->
+			<a href="tralive.html" class="Footer_links">Home | </a>
+			<a href="AboutUs.html" class="Footer_links">About Us | </a>
+			<a href="Packages.html" class="Footer_links">Packages | </a> 
+			<a href="Review.html" class="Footer_links">Reviews | </a>
+			<a href="Cart.html" class="Footer_links">Cart</a>
+		</div>
+		<!--Footer right side-->
+		<div id="Fright"> 
+			<a>Tel:66381137 Fax:66381137</a><br>
+			<span id="Footer_compnay_name">Tralive</span> Team would be more than happy to help you 
+			
+		</div>
+	
+	</div>
+	
+</body>
+</html>

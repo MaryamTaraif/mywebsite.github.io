@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Packages</title>
+
+	<link href="tralive.css" rel="stylesheet" type="text/css">
+
+	<script>
+		//store items in session storage 
+		function buyItem(Country, Price, Days, quantity) {
+			sessionStorage.setItem("Price", Price);
+			sessionStorage.setItem("Country", Country);
+			sessionStorage.setItem("Days", Days);
+			sessionStorage.setItem("quantity", quantity);
+		}
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<!--navigation bar div-->
+	<div id="navbar">
+		<!--logo pic-->
+		<img src="images/logo.png" id="logopic" alt="">
+		<!--list of links on website-->
+		<ul id="menu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="AboutUs.html">About Us</a></li>
+			<li><a href="Packages.html">Packages</a></li>
+			<li><a href="Review.html">Reviews</a></li>
+			<li><a href="Cart.html">Cart</a></li>
+
+			<li> <input type="text" placeholder="Search.." class="Search"></li>
+
+		</ul>
+		<!--purple bar contaning title-->
+	</div>
+	<div class="PurpleBar">
+		<p>Holiday Packages</p>
+	</div>
+
+	<!--3 divs containing 3 packages-->
+	<div class="package">
+		<img src="images/istanbulPic.jpeg" class="package_pic" alt="">
+		<h1>Istanbul</h1>
+		<p class="price">500 BD</p>
+		<p> 8 days</p>
+		<img src="images/food.png" class="img_package" alt="">
+		<img src="images/accomodation.png" class="img_package" alt="">
+		<img src="images/plane.png" class="img_package" alt="">
+		<img src="images/yacht.png" class="img_package" alt="">
+		<a href="Cart.html"> <input type="button" class="button" value="Add to Cart"
+				onClick="buyItem('Istanbul','500 BD', '8 Days','1');"></a>
+	</div>
+
+	<div class="package">
+		<img src="images/maldives.jpeg" class="package_pic" alt="">
+		<h1>Maldives</h1>
+		<p class="price">760 BD</p>
+		<p> 5 days</p>
+		<img src="images/food.png" class="img_package" alt="">
+		<img src="images/accomodation.png" class="img_package" alt="">
+		<img src="images/plane.png" class="img_package" alt="">
+		<img src="images/yacht.png" class="img_package" alt="">
+		<a href="Cart.html"> <input type="button" class="button" value="Add to Cart"
+				onClick="buyItem('Maldives','760 BD', '5 Days','1');"></a>
+	</div>
+
+
+	<div class="package">
+		<img src="images/Santorini.jpeg" class="package_pic" alt="">
+		<h1>Santorini</h1>
+		<p class="price">890 BD</p>
+		<p> 7 days</p>
+		<img src="images/food.png" class="img_package" alt="">
+		<img src="images/accomodation.png" class="img_package" alt="">
+		<img src="images/plane.png" class="img_package" alt="">
+		<a href="Cart.html"> <input type="button" class="button" value="Add to Cart"
+				onClick="buyItem('Santorini','890 BD','7 Days','1');"></a>
+	</div>
+
+
+
+
+
+
+
+	<!--footer styling-->
+	<div id="footer">
+		<br>
+		<!--Footer left side-->
+		<div id="Fleft">
+			<br>
+			© 2021, Tralive. All rights reserved
+		</div>
+		<!--Footer middle side-->
+		<div id="Fmiddle">
+			<br>
+			<!--clickable links-->
+			<a href="tralive.html" class="Footer_links">Home | </a>
+			<a href="AboutUs.html" class="Footer_links">About Us | </a>
+			<a href="Packages.html" class="Footer_links">Packages | </a>
+			<a href="Review.html" class="Footer_links">Reviews | </a>
+			<a href="Cart.html" class="Footer_links">Cart</a>
+		</div>
+		<!--Footer right side-->
+		<div id="Fright">
+			<a>Tel:66381137 Fax:66381137</a><br>
+			<span id="Footer_compnay_name">Tralive</span> Team would be more than happy to help you
+
+		</div>
+
+	</div>
+</body>
+
+</html>
